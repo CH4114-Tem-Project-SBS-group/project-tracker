@@ -81,8 +81,8 @@ export const projects: Project[] = [
     repo: "https://github.com/CH4114-Tem-Project-SBS-group/23MS211-gold-nanostructures",
   },
   {
-    roll: "25MP034",
-    slug: "25MP034-solvation-free-energy",
+    roll: "25MP014",
+    slug: "25MP014-solvation-free-energy",
     title: "Solvation Free Energy",
     short: "Solvation free energy",
     leadIn: "Solvation,",
@@ -101,7 +101,7 @@ export const projects: Project[] = [
     challenge: "Train a machine-learning potential independently, or apply an existing ML potential package, and assess its ability to reproduce solvation thermodynamics. Compare ML-based free energies and solvent structure with conventional force-field results.",
     problemStatement: "Investigate the solvation free energy of a selected molecule using molecular simulation. Relate the free energy to molecular polarity, solute–solvent interactions and suitable structural order parameters. As an advanced challenge, train or employ machine-learning potentials and compare their performance against conventional force fields.",
     topics: ["solvation-free-energy", "free-energy-calculations", "molecular-dynamics", "machine-learning-potentials"],
-    repo: "https://github.com/CH4114-Tem-Project-SBS-group/25MP034-solvation-free-energy",
+    repo: "https://github.com/CH4114-Tem-Project-SBS-group/25MP014-solvation-free-energy",
   },
   {
     roll: "23MS163",
