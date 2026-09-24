@@ -1,0 +1,81 @@
+---
+import { ORG, TRACKER_REPO } from "../data/projects";
+import { url } from "../lib/url";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  active?: "projects" | "statements" | "activity";
+}
+const { title, description = "CH4114 SBS group project register.", active } = Astro.props;
+const nav = [
+  { key: "projects", href: url(""), label: "Register" },
+  { key: "statements", href: url("statements/"), label: "Statements" },
+  { key: "activity", href: url("activity/"), label: "Activity" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href={url("favicon.svg")} />
+    <title>{title} · CH4114 SBS</title>
+  </head>
+  <body>
+    <div class="rail">
+      <span class="coords">X <span id="cx">0.00</span> &nbsp; Y <span id="cy">0.00</span></span>
+      <span class="rail-right"><a href={`https://github.com/${ORG}`} target="_blank" rel="noopener">github.com/{ORG}</a></span>
+    </div>
+
+    <nav class="nav">
+      <a class="nav-brand" href={url("")}>
+        <img src={url("logo-mark.svg")} alt="" />
+        <span class="nm">SBS<small>CH4114 · PROJECT REGISTER</small></span>
+      </a>
+      <span class="nav-links">
+        {nav.map((n) => (
+          <a href={n.href} aria-current={active === n.key ? "page" : undefined}>{n.label}</a>
+        ))}
+      </span>
+      <a class="btn btn-primary" href={TRACKER_REPO} target="_blank" rel="noopener">
+        <span>Source</span><i>↗</i>
+      </a>
+    </nav>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="scallop" style="--sc:#28407d"></div>
+      <div class="wrap footer-inner">
+        <img class="footer-mark" src={url("logo-mark-cream.svg")} alt="" />
+        <p class="footer-tag">research at the speed of simulation</p>
+        <div class="footer-bar">
+          <span>CH4114 · Computational Physics · IISER Kolkata</span>
+          <span class="grp">
+            <a href={`https://github.com/${ORG}`} target="_blank" rel="noopener">Organization</a>
+            <a href={TRACKER_REPO} target="_blank" rel="noopener">Tracker</a>
+            <a href={url("statements/")}>Statements</a>
+          </span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const cx = document.getElementById("cx");
+      const cy = document.getElementById("cy");
+      const paint = () => {
+        if (cx) cx.textContent = (window.scrollX / 100).toFixed(2);
+        if (cy) cy.textContent = (window.scrollY / 100).toFixed(2);
+      };
+      paint();
+      addEventListener("scroll", paint, { passive: true });
+    </script>
+  </body>
+</html>

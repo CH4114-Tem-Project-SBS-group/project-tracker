@@ -1,0 +1,21 @@
+{
+  "name": "ch4114-project-tracker",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Project tracker and problem-statement registry for the CH4114 SBS group.",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "sync:activity": "node scripts/sync-activity.mjs"
+  },
+  "dependencies": {
+    "astro": "^7.3.5"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

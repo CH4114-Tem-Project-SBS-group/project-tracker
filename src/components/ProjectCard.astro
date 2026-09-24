@@ -1,0 +1,32 @@
+---
+import type { Project } from "../data/projects";
+import { url } from "../lib/url";
+interface Props {
+  project: Project;
+}
+const { project: p } = Astro.props;
+const href = url(`projects/${p.slug}/`);
+const cat = p.domain.split("·")[0].trim();
+const haystack = [p.roll, p.title, p.short, p.domain, p.tagline, p.topics.join(" ")]
+  .join(" ")
+  .toLowerCase();
+---
+
+<article
+  class="card"
+  style={`--c1:${p.accent};--c2:${p.accent2}`}
+  data-cat={cat}
+  data-search={haystack}
+>
+  <div class="card-roll">{p.roll}</div>
+  <div class="card-domain">{p.domain}</div>
+  <h3><a href={href}>{p.title}</a></h3>
+  <p>{p.tagline}</p>
+  <div class="topics">
+    {p.topics.slice(0, 3).map((t) => <span class="tag">{t}</span>)}
+  </div>
+  <div class="card-foot">
+    <a class="open" href={href}>Details →</a>
+    <a class="repo" href={p.repo} target="_blank" rel="noopener">repo ↗</a>
+  </div>
+</article>

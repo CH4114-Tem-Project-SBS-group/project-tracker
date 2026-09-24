@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img">
+<circle cx="140" cy="150" r="96" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 7"/>
+<circle cx="140" cy="150" r="58" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 7"/>
+<circle cx="140" cy="150" r="20" fill="#E76051"/>
+<circle cx="198.0" cy="150.0" r="8" fill="#FFFBF3"/>
+<circle cx="181.0" cy="109.0" r="8" fill="#FFFBF3"/>
+<circle cx="140.0" cy="92.0" r="8" fill="#FFFBF3"/>
+<circle cx="99.0" cy="109.0" r="8" fill="#FFFBF3"/>
+<circle cx="82.0" cy="150.0" r="8" fill="#FFFBF3"/>
+<circle cx="99.0" cy="191.0" r="8" fill="#FFFBF3"/>
+<circle cx="140.0" cy="208.0" r="8" fill="#FFFBF3"/>
+<circle cx="181.0" cy="191.0" r="8" fill="#FFFBF3"/>
+<circle cx="227.0" cy="109.4" r="6" fill="#9DB7F0"/>
+<circle cx="156.7" cy="55.5" r="6" fill="#9DB7F0"/>
+<circle cx="56.9" cy="102.0" r="6" fill="#9DB7F0"/>
+<circle cx="53.0" cy="190.6" r="6" fill="#9DB7F0"/>
+<circle cx="123.3" cy="244.5" r="6" fill="#9DB7F0"/>
+<circle cx="223.1" cy="198.0" r="6" fill="#9DB7F0"/>
+<rect x="306" y="42" width="152" height="182" rx="6" fill="none" stroke="#FFFBF3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M324 198h118" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M324 198V62" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M332 86h110" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<path d="M332 86v92" fill="none" stroke="#E76051" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M332 86l-6 10M332 86l6 10M332 178l-6-10M332 178l6-10" fill="none" stroke="#E76051" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="342" y="138" font-family="ui-monospace,monospace" font-size="15" fill="#FFFBF3">ΔG</text>
+<text x="326" y="216" font-family="ui-monospace,monospace" font-size="11" fill="#9DB7F0">λ : 0 → 1</text>
+<text x="30" y="30" font-family="ui-monospace,monospace" font-size="12" fill="#9DB7F0" letter-spacing="1.5">03 · SOLVATION</text>
+</svg>

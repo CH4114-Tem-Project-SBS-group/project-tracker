@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img">
+<path d="M56 78h42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M56 78v42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M56 120h42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M56 120v42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M56 162h42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M56 162v42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M56 204h42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M98 78h42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M98 78v42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M98 120h42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M98 120v42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M98 162h42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M98 162v42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M98 204h42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M140 78h42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M140 78v42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M140 120h42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M140 120v42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M140 162h42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M140 162v42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M140 204h42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M182 78h42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M182 78v42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M182 120h42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M182 120v42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M182 162h42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M182 162v42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M182 204h42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M224 78v42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M224 120v42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M224 162v42" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="56" cy="78" r="7" fill="#FFFBF3"/>
+<circle cx="56" cy="120" r="7" fill="#FFFBF3"/>
+<circle cx="56" cy="162" r="7" fill="#FFFBF3"/>
+<circle cx="56" cy="204" r="7" fill="#FFFBF3"/>
+<circle cx="98" cy="78" r="7" fill="#FFFBF3"/>
+<circle cx="98" cy="120" r="7" fill="#FFFBF3"/>
+<circle cx="98" cy="162" r="7" fill="#FFFBF3"/>
+<circle cx="98" cy="204" r="7" fill="#FFFBF3"/>
+<circle cx="140" cy="78" r="7" fill="#FFFBF3"/>
+<circle cx="140" cy="120" r="11" fill="#E76051"/>
+<path d="M140 120v-34" fill="none" stroke="#E76051" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M140 86l-7 10M140 86l7 10" fill="none" stroke="#E76051" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M140 120v34" fill="none" stroke="#E76051" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4"/>
+<path d="M140 154l-7-10M140 154l7-10" fill="none" stroke="#E76051" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4"/>
+<circle cx="140" cy="162" r="7" fill="#FFFBF3"/>
+<circle cx="140" cy="204" r="7" fill="#FFFBF3"/>
+<circle cx="182" cy="78" r="7" fill="#FFFBF3"/>
+<circle cx="182" cy="120" r="7" fill="#FFFBF3"/>
+<circle cx="182" cy="162" r="7" fill="#FFFBF3"/>
+<circle cx="182" cy="204" r="7" fill="#FFFBF3"/>
+<circle cx="224" cy="78" r="7" fill="#FFFBF3"/>
+<circle cx="224" cy="120" r="7" fill="#FFFBF3"/>
+<circle cx="224" cy="162" r="7" fill="#FFFBF3"/>
+<circle cx="224" cy="204" r="7" fill="#FFFBF3"/>
+<rect x="306" y="42" width="152" height="182" rx="6" fill="none" stroke="#FFFBF3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M324 198h118" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M324 198V62" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M332 72h24v112h-24z" fill="none" stroke="#E76051" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M376 72h24v112h-24z" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M420 72h14v112h-14z" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="326" y="216" font-family="ui-monospace,monospace" font-size="11" fill="#9DB7F0">χ(T)</text>
+<text x="30" y="30" font-family="ui-monospace,monospace" font-size="12" fill="#9DB7F0" letter-spacing="1.5">04 · DOPED CRYSTALS</text>
+</svg>

@@ -1,0 +1,140 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { projects } from "../data/projects";
+import { updates } from "../data/updates";
+import activityRaw from "../data/activity.json";
+
+interface ActivityProject {
+  count: number;
+  last: string | null;
+  daily: Record<string, number>;
+}
+interface ActivityData {
+  generatedAt: string | null;
+  windowDays?: number;
+  projects: Record<string, ActivityProject>;
+}
+const activity = activityRaw as unknown as ActivityData;
+const hasActivity = Object.keys(activity.projects ?? {}).length > 0;
+
+const WEEKS = 26;
+const DAY = 86400000;
+
+function startOfWeek(d: Date): Date {
+  const x = new Date(Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()));
+  x.setUTCDate(x.getUTCDate() - ((x.getUTCDay() + 6) % 7));
+  return x;
+}
+
+const anchor = activity.generatedAt ? new Date(activity.generatedAt) : new Date();
+const firstWeek = new Date(startOfWeek(anchor).getTime() - (WEEKS - 1) * 7 * DAY);
+const fmt = (d: Date) => d.toISOString().slice(0, 10);
+
+function shade(n: number): string {
+  if (!n) return "rgba(55,55,55,.06)";
+  const t = Math.min(n, 4) / 4;
+  return `rgba(40,63,125,${(0.18 + t * 0.72).toFixed(3)})`;
+}
+
+const generatedLabel = activity.generatedAt
+  ? new Date(activity.generatedAt).toISOString().slice(0, 10)
+  : null;
+---
+
+<BaseLayout
+  title="Activity"
+  description="Changelog and commit activity across the CH4114 SBS group."
+  active="activity"
+>
+  <section class="hero wrap" style="padding-bottom:1rem">
+    <span class="hero-annot" style="right:8%;top:7.2rem;transform:rotate(-5deg)">dates only ✎</span>
+    <h1 style="text-align:left">Activity &amp;<br /><em>changelog</em></h1>
+    <p class="hero-sub" style="text-align:left;margin-left:0">
+      Curated milestones for the register, plus commit activity from every project
+      repository. The sync records only dates and counts — never commit messages,
+      authors or diffs, because this page is public.
+    </p>
+  </section>
+
+  <section class="sec" style="padding-top:2rem">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Changelog</h2>
+        <span class="note">what changed</span>
+      </div>
+      <div class="paper-panel">
+        <ul class="updates">
+          {updates
+            .slice()
+            .sort((a, b) => (a.date < b.date ? 1 : -1))
+            .map((u) => (
+              <li>
+                <span class="d">{u.date}</span>
+                <div>
+                  <h4>{u.title}<span class="pill">{u.tag}</span></h4>
+                  <p>{u.body}</p>
+                </div>
+              </li>
+            ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Commit activity</h2>
+        <span class="note">{generatedLabel ? `synced ${generatedLabel}` : "not yet synced"}</span>
+      </div>
+
+      {!hasActivity && (
+        <div class="paper-panel">
+          <p style="margin:0;color:var(--body)">
+            Nothing synced yet. The maintainer runs
+            <code>npm run sync:activity</code> on the tracker repository, authenticated
+            with <code>gh</code> and access to the private project repositories, to
+            populate this view.
+          </p>
+        </div>
+      )}
+
+      {hasActivity &&
+        projects.map((p) => {
+          const a = activity.projects[p.slug];
+          if (!a) return null;
+          const cells = [];
+          for (let w = 0; w < WEEKS; w++) {
+            for (let d = 0; d < 7; d++) {
+              const day = new Date(firstWeek.getTime() + (w * 7 + d) * DAY);
+              const key = fmt(day);
+              const n = a.daily?.[key] ?? 0;
+              cells.push({ key, n, future: day > anchor });
+            }
+          }
+          return (
+            <div class="heat-panel">
+              <header>
+                <h4>
+                  <span style="font-family:var(--font-mono);color:var(--coral);font-size:.78rem">{p.roll}</span>
+                  &nbsp; {p.short}
+                </h4>
+                <span class="meta">
+                  {a.count} {a.count === 1 ? "commit" : "commits"}
+                  {a.last ? ` · last ${a.last}` : ""}
+                </span>
+              </header>
+              <div class="heat">
+                {cells.map((c) => (
+                  <i
+                    title={`${c.key}: ${c.n} commit${c.n === 1 ? "" : "s"}`}
+                    style={`background:${shade(c.n)};opacity:${c.future ? 0.3 : 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+          );
+        })}
+    </div>
+  </section>
+</BaseLayout>

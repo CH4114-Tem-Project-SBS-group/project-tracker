@@ -1,0 +1,325 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Slide from "../components/Slide.astro";
+import { projects, ORG, TRACKER_REPO } from "../data/projects";
+import { updates } from "../data/updates";
+import { url } from "../lib/url";
+
+const cats = [...new Set(projects.map((p) => p.domain.split("·")[0].trim()))];
+const access = [
+  {
+    role: "Group members",
+    title: "View",
+    sub: "read + clone + discuss",
+    lines: [
+      "Read every project in the register",
+      "Clone and run any repository",
+      "Open issues and propose changes",
+      "See activity across the whole group",
+    ],
+    cls: "",
+  },
+  {
+    role: "Project owner",
+    title: "Write",
+    sub: "own one project",
+    lines: [
+      "Everything in View",
+      "Push to your own repository",
+      "Merge accepted change proposals",
+      "Update your own problem statement",
+    ],
+    cls: "card-paper--coral card-paper--offset",
+  },
+  {
+    role: "Maintainer",
+    title: "Admin",
+    sub: "keeps the register honest",
+    lines: [
+      "Everything in Write, everywhere",
+      "Scaffold new project repositories",
+      "Curate the public tracker site",
+      "Sync activity and publish updates",
+    ],
+    cls: "card-paper--blue card-paper--offset2",
+  },
+];
+
+const faqs = [
+  {
+    q: "How do I get access to a project repository?",
+    a: `All nine repositories are private and visible to every member of the ${ORG} organisation. Ask the maintainer to invite your GitHub username as an organisation member — the org-wide default is read access, so you will immediately see everyone's work.`,
+  },
+  {
+    q: "I want a change in someone else's project. What do I do?",
+    a: "Members cannot push to a repository they do not own. Open an issue using the task template and discuss it. The owner (or the maintainer) applies the agreed change — this keeps each project's history under its owner's control.",
+  },
+  {
+    q: "Which simulation software should I use?",
+    a: "Each project lists suggested engines in docs/software.md. LAMMPS, GROMACS and Quantum ESPRESSO cover almost everything in the register; RASPA is useful for porous frameworks. Pin the exact version in environment.yml before you report results.",
+  },
+  {
+    q: "How is the activity page kept up to date?",
+    a: "It is not automatic. The maintainer runs `npm run sync:activity` on this repository, which reads commit dates from the private repos and writes only dates and counts into src/data/activity.json. Commit messages and diffs are never published.",
+  },
+  {
+    q: "Is the problem statement public?",
+    a: "The consolidated problem statements are published on this tracker so the group can read them side by side. The repositories themselves — code, data, notes and results — stay private to the organisation.",
+  },
+];
+---
+
+<BaseLayout title="Register" active="projects">
+  <section class="hero wrap">
+    <span class="hero-annot" style="left:8%;top:5.6rem;transform:rotate(-7deg)">
+      <span class="sym">✳</span> atomistic
+    </span>
+    <span class="hero-annot" style="right:7%;top:8.4rem;transform:rotate(5deg)">
+      not guesswork <span class="sym">↓</span>
+    </span>
+    <span class="hero-annot" style="left:11%;bottom:8.2rem;transform:rotate(-4deg);font-size:1.25rem">
+      ✎ nine projects, one register
+    </span>
+
+    <h1>Research at<br />the speed of<br /><em>simulation</em></h1>
+    <p class="hero-sub">
+      The consolidated project register for the CH4114 SBS group at IISER Kolkata.
+      Nine computational physics projects, nine private repositories, and every
+      problem statement in one place — open to read, closed to write.
+    </p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href={url("statements/")}><span>Read the statements</span><i>→</i></a>
+      <a class="btn" href={url("activity/")}><span>Track activity</span><i>·</i></a>
+    </div>
+  </section>
+
+  <div class="letterbox">
+    <figure>
+      <img src={url("art/hero.svg")} alt="A simulation cell, a trajectory readout and a library of project folders" />
+      <figcaption>fig. 01 — the working surface: simulation cell · trajectory readout · project shelf</figcaption>
+    </figure>
+  </div>
+
+  <section class="filmstrip-sec" id="projects">
+    <div class="filmstrip-pin">
+      <div class="filmstrip-head">
+        <div class="sec-head" style="margin-bottom:0">
+          <h2>The register</h2>
+          <span class="note">scroll →</span>
+        </div>
+        <p style="color:var(--body);margin:.75rem 0 0">
+          Nine projects, carried one at a time. Filter below, or jump straight to the
+          <a href={url("statements/")}>full problem statements</a>.
+        </p>
+        <div class="toolbar" style="margin:1.1rem 0 0">
+          <label class="search">
+            <span aria-hidden="true" class="mono">⌕</span>
+            <input id="q" type="search" placeholder="search roll number, topic, title…" aria-label="Search projects" />
+          </label>
+          <div class="chips" id="chips">
+            <span class="chip" data-cat="all" aria-pressed="true">All</span>
+            {cats.map((c) => <span class="chip" data-cat={c} aria-pressed="false">{c}</span>)}
+          </div>
+        </div>
+      </div>
+      <div class="filmstrip-track" id="track">
+        {projects.map((p, i) => <Slide project={p} index={i} />)}
+      </div>
+    </div>
+  </section>
+
+  <div class="scallop" style="--sc:var(--paper)"></div>
+  <section class="sec sec--cream">
+    <div class="tab-label tab-label--left">Manifesto</div>
+    <div class="wrap">
+      <div class="manifesto">
+        <p class="salute">To those who simulate the invisible,</p>
+        <p class="big">
+          A phase boundary does not care whether you believe in it. A hydrogen bond
+          forms and breaks on its own schedule. A supercurrent tunnels whether or
+          not anyone is watching.
+        </p>
+        <p>
+          Computation is how we make those things visible — not as a picture, but as
+          a number with an error bar attached. So this register is written the way the
+          work actually happens: one system, one set of observables, one honest
+          challenge at a time.
+        </p>
+        <p>
+          Every project here has a stated objective, a named analysis plan, and an
+          advanced problem that has to be argued about rather than assumed. Read each
+          other's statements. Question the methodology. Propose the change in the
+          issue tracker and let the owner land it.
+        </p>
+        <p class="big">This is for you — nine of you.</p>
+      </div>
+    </div>
+  </section>
+  <div class="scallop" style="--sc:#fffbf3"></div>
+
+  <section class="sec" id="access">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Access model</h2>
+        <span class="note">who can touch what</span>
+      </div>
+      <div class="cards3">
+        {access.map((a) => (
+          <div class={`card-paper ${a.cls}`}>
+            <span class="role">{a.role}</span>
+            <h3>{a.title}</h3>
+            <p class="price">{a.sub}</p>
+            <ul class="list">
+              {a.lines.map((l) => <li>{l}</li>)}
+            </ul>
+            <a class="btn" href={`https://github.com/${ORG}`} target="_blank" rel="noopener" style="width:100%;justify-content:center">
+              <span>Open GitHub</span><i>↗</i>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="registry" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Full index</h2>
+        <span class="note">the short version</span>
+      </div>
+      <div class="paper-panel">
+        <table class="registry">
+          <thead>
+            <tr>
+              <th>Roll</th><th>Project</th><th>Area</th><th>Main analysis</th><th>Challenge</th><th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {projects.map((p) => (
+              <tr>
+                <td class="roll">{p.roll}</td>
+                <td class="ti">{p.title}</td>
+                <td>{p.domain.split("·")[0].trim()}</td>
+                <td>{p.analysis.map((r) => r.param).join(", ")}</td>
+                <td>{p.challengeTitle}</td>
+                <td><a href={url(`projects/${p.slug}/`)}>open →</a></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <div class="scallop" style="--sc:var(--paper)"></div>
+  <section class="sec sec--cream" id="faqs">
+    <div class="tab-label tab-label--right">FAQs</div>
+    <div class="wrap">
+      <div class="faq-grid">
+        <div>
+          <div class="sec-head" style="margin-bottom:1.5rem">
+            <h2>Questions</h2>
+            <span class="note">need help?</span>
+          </div>
+          <p style="color:var(--body);max-width:30rem">
+            Everything about access, software, and how this register is kept honest.
+            Something missing? Open an issue on the
+            <a href={TRACKER_REPO} target="_blank" rel="noopener">tracker repository</a>.
+          </p>
+          <p style="margin-top:1.5rem">
+            <a class="btn" href={`https://github.com/${ORG}`} target="_blank" rel="noopener">
+              <span>github.com/{ORG}</span><i>↗</i>
+            </a>
+          </p>
+        </div>
+        <div>
+          {faqs.map((f) => (
+            <details class="faq-item">
+              <summary>
+                <span class="sq">
+                  <svg width="12" height="10" viewBox="0 0 12 10" fill="none" aria-hidden="true">
+                    <path d="M1 2.5 6 7.5 11 2.5" stroke="#373737" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                {f.q}
+              </summary>
+              <div class="ans">{f.a}</div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:2rem">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Changelog</h2>
+        <span class="note">what changed</span>
+      </div>
+      <div class="paper-panel">
+        <ul class="updates">
+          {updates
+            .slice()
+            .sort((a, b) => (a.date < b.date ? 1 : -1))
+            .map((u) => (
+              <li>
+                <span class="d">{u.date}</span>
+                <div>
+                  <h4>{u.title}<span class="pill">{u.tag}</span></h4>
+                  <p>{u.body}</p>
+                </div>
+              </li>
+            ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const q = document.getElementById("q") as HTMLInputElement | null;
+  const slides = Array.from(document.querySelectorAll<HTMLElement>(".slide"));
+  const chips = Array.from(document.querySelectorAll<HTMLElement>(".chip"));
+  const track = document.getElementById("track");
+  let activeCat = "all";
+
+  function apply() {
+    const term = (q?.value ?? "").trim().toLowerCase();
+    for (const s of slides) {
+      const ok = (!term || (s.dataset.search ?? "").includes(term)) &&
+        (activeCat === "all" || s.dataset.cat === activeCat);
+      s.style.display = ok ? "" : "none";
+    }
+    layout();
+  }
+
+  let maxShift = 0;
+  function layout() {
+    if (!track) return;
+    maxShift = Math.max(0, track.scrollWidth - window.innerWidth + 40);
+  }
+
+  function onScroll() {
+    const sec = document.getElementById("projects");
+    if (!sec || !track) return;
+    const r = sec.getBoundingClientRect();
+    const total = sec.offsetHeight - window.innerHeight;
+    const done = Math.min(Math.max(-r.top, 0), total);
+    const p = total > 0 ? done / total : 0;
+    track.style.transform = `translate3d(${-p * maxShift}px,0,0)`;
+  }
+
+  q?.addEventListener("input", apply);
+  for (const chip of chips) {
+    chip.addEventListener("click", () => {
+      activeCat = chip.dataset.cat ?? "all";
+      chips.forEach((c) => c.setAttribute("aria-pressed", String(c === chip)));
+      apply();
+    });
+  }
+  addEventListener("resize", () => { layout(); onScroll(); });
+  addEventListener("scroll", onScroll, { passive: true });
+  layout();
+  onScroll();
+</script>

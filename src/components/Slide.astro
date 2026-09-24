@@ -1,0 +1,37 @@
+---
+import type { Project } from "../data/projects";
+import { url } from "../lib/url";
+
+interface Props {
+  project: Project;
+  index: number;
+}
+const { project: p, index } = Astro.props;
+const n = String(index + 1).padStart(2, "0");
+const href = url(`projects/${p.slug}/`);
+const hay = [p.roll, p.title, p.short, p.domain, p.tagline, p.topics.join(" ")]
+  .join(" ")
+  .toLowerCase();
+---
+
+<div class="slide" data-cat={p.domain.split("·")[0].trim()} data-search={hay}>
+  <div>
+    <div class="num">{n}</div>
+    <span class="proj-lead">{p.leadIn}</span>
+    <h3>{p.action}</h3>
+    <div class="roll">{p.roll}</div>
+    <div class="kicker">{p.domain}</div>
+    <p>
+      <a class="emph" href={href}>{p.short}</a> — {p.tagline}
+    </p>
+    <div class="proj-actions">
+      <a class="btn" href={href}><span>Read statement</span><i>→</i></a>
+      <a class="btn btn-ghost" href={p.repo} target="_blank" rel="noopener"><span>Repo</span><i>↗</i></a>
+    </div>
+    <span class="proj-hint">↳ explore the register</span>
+  </div>
+  <div class="paper">
+    <span class="folder-tab">{p.slug}</span>
+    <img src={url(`art/s${index + 1}.svg`)} alt={`Schematic for ${p.title}`} loading="lazy" />
+  </div>
+</div>

@@ -1,0 +1,5 @@
+{
+  "generatedAt": null,
+  "note": "Run `npm run sync:activity` (requires gh auth with access to the private org repos) to populate this file with commit activity from each project repository.",
+  "projects": {}
+}

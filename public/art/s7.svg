@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 320" role="img">
+<path d="M34 84v130a10 10 0 0 0 10 10h30a10 10 0 0 0 10-10V84" fill="none" stroke="#FFFBF3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M34 84h50" fill="none" stroke="#FFFBF3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M44 130h40v94" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4"/>
+<circle cx="64" cy="106" r="10" fill="#E76051"/>
+<text x="40" y="248" font-family="ui-monospace,monospace" font-size="12" fill="#FFFBF3">W</text>
+<path d="M96 84v130a10 10 0 0 0 10 10h30a10 10 0 0 0 10-10V84" fill="none" stroke="#FFFBF3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M96 84h50" fill="none" stroke="#FFFBF3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M106 152h40v72" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4"/>
+<circle cx="126" cy="106" r="10" fill="#FFFBF3"/>
+<text x="102" y="248" font-family="ui-monospace,monospace" font-size="12" fill="#FFFBF3">ACN</text>
+<path d="M158 84v130a10 10 0 0 0 10 10h30a10 10 0 0 0 10-10V84" fill="none" stroke="#FFFBF3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M158 84h50" fill="none" stroke="#FFFBF3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M168 174h40v50" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4"/>
+<circle cx="188" cy="106" r="10" fill="#FFFBF3"/>
+<text x="164" y="248" font-family="ui-monospace,monospace" font-size="12" fill="#FFFBF3">EtOH</text>
+<path d="M220 84v130a10 10 0 0 0 10 10h30a10 10 0 0 0 10-10V84" fill="none" stroke="#FFFBF3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M220 84h50" fill="none" stroke="#FFFBF3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M230 196h40v28" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4"/>
+<circle cx="250" cy="106" r="10" fill="#FFFBF3"/>
+<text x="226" y="248" font-family="ui-monospace,monospace" font-size="12" fill="#FFFBF3">DMSO</text>
+<rect x="306" y="42" width="152" height="182" rx="6" fill="none" stroke="#FFFBF3" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M324 198h118" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M324 198V62" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M338 182h22v16h-22z" fill="none" stroke="#E76051" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M372 154h22v44h-22z" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M406 128h22v70h-22z" fill="none" stroke="#9DB7F0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="326" y="216" font-family="ui-monospace,monospace" font-size="11" fill="#9DB7F0">ΔG(solv)</text>
+<text x="30" y="30" font-family="ui-monospace,monospace" font-size="12" fill="#9DB7F0" letter-spacing="1.5">07 · SOLVENT SERIES</text>
+</svg>

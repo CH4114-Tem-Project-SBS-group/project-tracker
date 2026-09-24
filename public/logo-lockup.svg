@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 196 64" role="img" aria-label="SBS — CH4114 SBS group">
+  <title>SBS — CH4114 SBS group</title>
+  <g fill="none" stroke="#28407D" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M32 4 56.25 18 56.25 46 32 60 7.75 46 7.75 18Z"/>
+    <path d="M48 32 40 18.14 24 18.14 16 32 24 45.86 40 45.86Z"/>
+  </g>
+  <circle cx="32" cy="32" r="5.4" fill="#E76051"/>
+  <g fill="none" stroke="#28407D" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M103 20c0-5.5-5.5-9-13-9s-13 3.5-13 8.5c0 8.5 26 5.5 26 15.5C103 43 96.5 47 88.5 47S75 43.5 75 37.5"/>
+    <path d="M117 46V12h12.5c8.5 0 13.5 4 13.5 9.5s-5 9-12 9.5"/>
+    <path d="M117 30.5h13.5c8.5 0 14 3.5 14 8s-5.5 7.5-13 7.5H117"/>
+    <path d="M186.5 20c0-5.5-5.5-9-13-9s-13 3.5-13 8.5c0 8.5 26 5.5 26 15.5C186.5 43 180 47 172 47S158.5 43.5 158.5 37.5"/>
+  </g>
+  <text x="130.75" y="59.5" text-anchor="middle" font-family="ui-monospace, Menlo, Consolas, monospace" font-size="9" letter-spacing="1" fill="#5B5B5B">CH4114 · SBS GROUP</text>
+</svg>

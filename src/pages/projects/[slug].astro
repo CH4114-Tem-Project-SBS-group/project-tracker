@@ -1,0 +1,109 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { projects } from "../../data/projects";
+import { url } from "../../lib/url";
+
+export function getStaticPaths() {
+  return projects.map((p) => ({ params: { slug: p.slug }, props: { project: p } }));
+}
+
+const { project: p } = Astro.props;
+const idx = projects.findIndex((x) => x.slug === p.slug);
+---
+
+<BaseLayout title={p.short} description={p.description} active="projects">
+  <section class="hero wrap" style="padding-bottom:1.2rem">
+    <p style="margin:0 0 1.4rem">
+      <a href={url("")} style="font-family:var(--font-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none">← register</a>
+    </p>
+    <span class="hero-annot" style="right:8%;top:8.5rem;transform:rotate(5deg)">{p.leadIn} {p.action}</span>
+    <div style="font-family:var(--font-mono);font-size:.72rem;letter-spacing:.16em;color:var(--coral)">{p.roll}</div>
+    <h1 style="text-align:left;font-size:clamp(2.2rem,6.5vw,5rem)">{p.title}</h1>
+    <div style="font-family:var(--font-mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--body);margin-top:.8rem">
+      {p.domain}
+    </div>
+    <p class="hero-sub" style="text-align:left;margin-left:0;max-width:44rem">{p.tagline}</p>
+    <div class="hero-cta" style="justify-content:flex-start">
+      <a class="btn btn-primary" href={p.repo} target="_blank" rel="noopener"><span>Open repository</span><i>↗</i></a>
+      <a class="btn" href="#statement"><span>Problem statement</span><i>↓</i></a>
+    </div>
+  </section>
+
+  <div class="letterbox">
+    <figure>
+      <img src={url(`art/s${idx + 1}.svg`)} alt={`Schematic for ${p.title}`} />
+      <figcaption>fig. 02 — {p.short}: schematic of the proposed analysis</figcaption>
+    </figure>
+  </div>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="proj" style="border-top:0;padding-top:0">
+        <div>
+          <div class="num">01</div>
+          <span class="proj-lead">Purpose,</span>
+          <h3>Stated</h3>
+          <p>{p.overview}</p>
+
+          <div class="num" style="margin-top:2.5rem">02</div>
+          <span class="proj-lead">Objectives,</span>
+          <h3>Numbered</h3>
+          <ul class="list">
+            {p.objectives.map((o) => <li>{o}</li>)}
+          </ul>
+
+          <div class="num" style="margin-top:2.5rem">03</div>
+          <span class="proj-lead">System,</span>
+          <h3>Built</h3>
+          <ul class="list">
+            {p.simulation.map((s) => <li>{s}</li>)}
+          </ul>
+
+          <div class="num" style="margin-top:2.5rem">04</div>
+          <span class="proj-lead">Challenge,</span>
+          <h3>Argued</h3>
+          <h4 style="font-family:var(--font-head);font-size:1.05rem;margin:.2rem 0 .5rem">{p.challengeTitle}</h4>
+          <p>{p.challenge}</p>
+
+          <div class="num" style="margin-top:2.5rem">05</div>
+          <span class="proj-lead">Statement,</span>
+          <h3>Consolidated</h3>
+          <div id="statement" class="stmt blockquote-wrap" style="border-top:0;padding-top:1rem">
+            <blockquote>{p.problemStatement}</blockquote>
+          </div>
+        </div>
+
+        <aside class="paper" style="position:sticky;top:6.5rem">
+          <span class="folder-tab">{p.roll}</span>
+          <div style="color:var(--cream)">
+            <div style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;opacity:.75">Analysis plan</div>
+            <table class="tbl" style="margin-top:.8rem">
+              <tbody>
+                {p.analysis.map((r) => (
+                  <tr>
+                    <td style="color:var(--cream);font-family:var(--font-head)">{r.param}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+            <div style="margin-top:1.1rem">
+              {p.analysis.map((r) => (
+                <p style="font-size:.82rem;line-height:1.45;margin:0 0 .85rem;color:rgba(255,251,243,.85)">
+                  <strong style="color:var(--cream)">{r.param}</strong><br />{r.investigation}
+                </p>
+              ))}
+            </div>
+            <hr class="hr-dash" style="border-top-color:rgba(234,223,201,.4);margin:1.1rem 0" />
+            <div style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;opacity:.75">Software</div>
+            <ul class="list" style="margin-top:.7rem">
+              {p.software.map((s) => <li style="color:var(--cream);border-bottom-color:rgba(234,223,201,.4);font-size:.85rem">{s}</li>)}
+            </ul>
+            <a class="btn" href={p.repo} target="_blank" rel="noopener" style="width:100%;justify-content:center;margin-top:.5rem">
+              <span>Repository</span><i>↗</i>
+            </a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
