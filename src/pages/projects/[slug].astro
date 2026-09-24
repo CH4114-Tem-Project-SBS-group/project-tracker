@@ -18,7 +18,7 @@ const idx = projects.findIndex((x) => x.slug === p.slug);
     </p>
     <span class="hero-annot" style="right:8%;top:8.5rem;transform:rotate(5deg)">{p.leadIn} {p.action}</span>
     <div style="font-family:var(--font-mono);font-size:.72rem;letter-spacing:.16em;color:var(--coral)">{p.roll}</div>
-    <h1 style="text-align:left;font-size:clamp(2.2rem,6.5vw,5rem)">{p.title}</h1>
+    <h1 class="proj-title">{p.title}</h1>
     <div style="font-family:var(--font-mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--body);margin-top:.8rem">
       {p.domain}
     </div>
@@ -73,7 +73,7 @@ const idx = projects.findIndex((x) => x.slug === p.slug);
           </div>
         </div>
 
-        <aside class="paper" style="position:sticky;top:6.5rem">
+        <aside class="paper proj-aside">
           <span class="folder-tab">{p.roll}</span>
           <div style="color:var(--cream)">
             <div style="font-family:var(--font-mono);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;opacity:.75">Analysis plan</div>

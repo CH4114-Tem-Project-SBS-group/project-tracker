@@ -824,12 +824,168 @@ code, pre, .mono { font-family: var(--font-mono); }
   clip: rect(0 0 0 0);
 }
 
+/* ---------------------------------------------------------------------------
+   Responsive helpers
+   --------------------------------------------------------------------------- */
+
+/* Horizontal scroll container for wide tables (full index / registry). */
+.scroll-x {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+}
+.scroll-hint {
+  display: none;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0.7rem 0 0;
+}
+
+/* Project page: sticky analysis aside + title scale (moved out of inline styles
+   so the phone layout can turn the sticky behaviour off). */
+.proj-aside { position: sticky; top: 6.5rem; }
+.proj-title { text-align: left; font-size: clamp(2.2rem, 6.5vw, 5rem); }
+
 @media (max-width: 1080px) {
   .proj, .slide { grid-template-columns: 1fr; }
   .cards3 { grid-template-columns: 1fr; }
   .card-paper--offset, .card-paper--offset2 { margin-top: 0; }
   .faq-grid { grid-template-columns: 1fr; }
-  .nav-links { display: none; }
+  /* keep the page links reachable — tighten them instead of hiding them */
+  /* Touch widths (tablets included): full-size tap targets and 16px fields so
+     mobile Safari does not zoom the page when an input takes focus. */
+  .nav-links a { display: inline-flex; align-items: center; min-height: 40px; padding: 0.5rem 0.5rem; font-size: 0.78rem; }
+  .chip { display: inline-flex; align-items: center; min-height: 40px; padding: 0.5rem 0.7rem; }
+  .search input { font-size: 16px; }
   .toc { columns: 1; }
-  .filmstrip-sec { height: 420vh; }
+
+  /* The pinned, scroll-driven filmstrip needs the two-column slide. Once slides
+     stack, a 100vh pin would clip them (480×320 art + text exceeds the pin), so
+     the register becomes a plain vertical list here. The track turns into a grid,
+     which index.astro's script detects and uses to skip the horizontal shift. */
+  .filmstrip-sec { height: auto; }
+  .filmstrip-pin { position: static; height: auto; overflow: visible; }
+  .filmstrip-head { padding-bottom: 1.25rem; }
+  .filmstrip-head .note { display: none; }
+  .filmstrip-track {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    padding: 1rem var(--pad) 2.5rem;
+    will-change: auto;
+    transform: none !important;
+  }
+  /* Grid items must be allowed to shrink, so one long word can never widen the page. */
+  .filmstrip-track > *, .proj > * { min-width: 0; }
 }
+
+/* ---------------------------------------------------------------------------
+   Phones
+   --------------------------------------------------------------------------- */
+@media (max-width: 640px) {
+  :root { --pad: 1.1rem; }
+
+  /* Decorative fixed/absolute furniture would collide with the taller nav. */
+  .rail { display: none; }
+  .hero-annot { display: none; }
+
+  /* Nav: brand + source on the first row, page links on a second row. */
+  .nav {
+    top: 0.5rem;
+    height: auto;
+    width: calc(100% - 1.1rem);
+    flex-wrap: wrap;
+    gap: 0.4rem 0.5rem;
+    padding: 0.5rem;
+  }
+  .nav-brand { order: 1; min-width: 0; }
+  .nav-brand img { width: 26px; height: 26px; }
+  .nav-brand .nm { font-size: 0.98rem; min-width: 0; }
+  /* On narrow phones the tagline truncates instead of pushing Source off-canvas. */
+  .nav-brand .nm small { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .nav > .btn { order: 2; height: 40px; min-height: 40px; flex-shrink: 0; }
+  .nav > .btn > span { padding: 0 0.7rem; font-size: 0.62rem; }
+  .nav > .btn > i { width: 40px; font-size: 0.8rem; }
+  .nav-links { order: 3; flex: 1 1 100%; display: flex; justify-content: center; }
+  .nav-links a { display: inline-flex; align-items: center; min-height: 40px; padding: 0.55rem 0.6rem; font-size: 0.8rem; }
+
+  /* Hero */
+  .hero { padding: 8.5rem 0 1.5rem; }
+  .hero h1 { font-size: clamp(1.9rem, 9.2vw, 2.7rem); line-height: 0.98; }
+  .hero-sub { margin-top: 1.4rem; }
+  .hero-cta { flex-direction: column; align-items: stretch; margin-top: 1.8rem; }
+  .hero-cta .btn { width: 100%; justify-content: space-between; }
+  /* Long labels (the org URL button) wrap instead of being clipped, and the
+     button grows to fit rather than overflowing the page. */
+  .btn { height: auto; min-height: 48px; }
+  .btn > span { white-space: normal; overflow-wrap: anywhere; }
+  .proj-title { font-size: clamp(1.75rem, 7.5vw, 2.4rem); }
+
+  .letterbox { margin-top: 2rem; }
+  .letterbox figure { padding: 0.5rem; }
+  .letterbox figcaption { font-size: 0.6rem; line-height: 1.45; }
+
+  /* Sections + section headings */
+  .sec { padding: 3.25rem 0; }
+  .sec-head { margin-bottom: 1.75rem; gap: 0.7rem; }
+  .sec-head h2 { font-size: clamp(1.8rem, 8.5vw, 2.4rem); }
+  .sec-head .note { font-size: 1.2rem; }
+  .sec-head p { max-width: 100%; }
+
+  /* Folder tabs: anchor them inside the viewport instead of off-canvas. */
+  .tab-label { width: clamp(104px, 32vw, 150px); height: 30px; font-size: 0.54rem; }
+  .tab-label--left { left: 1rem; }
+  .tab-label--right { left: auto; right: 1rem; }
+
+  /* Register cards: full-width stacked action buttons. */
+  .proj-actions { flex-direction: column; align-items: stretch; }
+  .proj-actions .btn { width: 100%; justify-content: space-between; }
+  .proj-hint { display: none; }
+
+  /* Cards, panels, changelog */
+  .cards3 { gap: 1.25rem; }
+  .card-paper { padding: 1.85rem 1.25rem 2rem; }
+  .paper-panel, .heat-panel { padding: 1.15rem 1rem; }
+  /* 26 weeks × 12px fits a phone's content width without sideways scrolling */
+  .heat { grid-template-rows: repeat(7, 10px); gap: 2px; }
+  .heat i { width: 10px; height: 10px; }
+  .faq-item .ans { padding-left: 0; overflow-wrap: anywhere; }
+  .updates li { grid-template-columns: 1fr; gap: 0.3rem; padding: 1rem 0; }
+  .updates h4 { font-size: 1rem; }
+
+  /* Whole statements + project pages */
+  .stmt { padding: 2.35rem 0; scroll-margin-top: 9rem; }
+  .stmt blockquote { padding: 1.1rem 1rem; font-size: 0.98rem; }
+  .proj { padding: 2.35rem 0; gap: 1.75rem; }
+  .proj-aside { position: static; }
+  .proj h3 { font-size: clamp(1.6rem, 7.6vw, 2.3rem); }
+  .proj p, .proj h3, .stmt blockquote { overflow-wrap: anywhere; }
+  .num { font-size: clamp(2.6rem, 13vw, 3.6rem); }
+  .paper { padding: 0.85rem; }
+  .paper .folder-tab { left: 0.85rem; padding: 0 0.7rem; font-size: 0.54rem; }
+  .manifesto .salute { font-size: clamp(1.5rem, 7vw, 2rem); }
+
+  /* Tables: scroll rather than squash. */
+  .scroll-x { margin: 0 -1rem; padding: 0 1rem; }
+  .scroll-x .registry { min-width: 660px; }
+  .registry { font-size: 0.72rem; }
+  .registry th, .registry td { padding-left: 0.5rem; padding-right: 0.5rem; }
+  .scroll-hint { display: block; }
+  .tbl { font-size: 0.85rem; }
+
+  /* Footer */
+  .site-footer { padding: 3rem 0 1.25rem; }
+  .footer-tag { margin-top: 1rem; }
+  .footer-bar {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.6rem;
+    margin-top: 2rem;
+  }
+  .footer-bar .grp { justify-content: center; gap: 0.9rem; }
+}
+

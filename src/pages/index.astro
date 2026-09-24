@@ -188,25 +188,28 @@ const faqs = [
         <span class="note">the short version</span>
       </div>
       <div class="paper-panel">
-        <table class="registry">
-          <thead>
-            <tr>
-              <th>Roll</th><th>Project</th><th>Area</th><th>Main analysis</th><th>Challenge</th><th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {projects.map((p) => (
+        <div class="scroll-x">
+          <table class="registry">
+            <thead>
               <tr>
-                <td class="roll">{p.roll}</td>
-                <td class="ti">{p.title}</td>
-                <td>{p.domain.split("·")[0].trim()}</td>
-                <td>{p.analysis.map((r) => r.param).join(", ")}</td>
-                <td>{p.challengeTitle}</td>
-                <td><a href={url(`projects/${p.slug}/`)}>open →</a></td>
+                <th>Roll</th><th>Project</th><th>Area</th><th>Main analysis</th><th>Challenge</th><th></th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {projects.map((p) => (
+                <tr>
+                  <td class="roll">{p.roll}</td>
+                  <td class="ti">{p.title}</td>
+                  <td>{p.domain.split("·")[0].trim()}</td>
+                  <td>{p.analysis.map((r) => r.param).join(", ")}</td>
+                  <td>{p.challengeTitle}</td>
+                  <td><a href={url(`projects/${p.slug}/`)}>open →</a></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        <p class="scroll-hint">swipe to see every column →</p>
       </div>
     </div>
   </section>
@@ -295,14 +298,24 @@ const faqs = [
   }
 
   let maxShift = 0;
+
+  // On phones the track is a vertical grid (see global.css) and must not be shifted.
+  function isStacked() {
+    return !track || getComputedStyle(track).display === "grid";
+  }
+
   function layout() {
     if (!track) return;
-    maxShift = Math.max(0, track.scrollWidth - window.innerWidth + 40);
+    maxShift = isStacked() ? 0 : Math.max(0, track.scrollWidth - window.innerWidth + 40);
   }
 
   function onScroll() {
     const sec = document.getElementById("projects");
     if (!sec || !track) return;
+    if (isStacked()) {
+      track.style.transform = "";
+      return;
+    }
     const r = sec.getBoundingClientRect();
     const total = sec.offsetHeight - window.innerHeight;
     const done = Math.min(Math.max(-r.top, 0), total);
